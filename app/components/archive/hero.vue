@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { blogsPage } from "~/data";
+import siteConfig from "~/config";
 </script>
 
 <template>
@@ -8,10 +8,10 @@ import { blogsPage } from "~/data";
       <div class="px-6">
         <h1
           class="text-black dark:text-zinc-300 font-semibold leading-tight text-4xl md:text-5xl my-5">
-          {{ blogsPage.title }}
+          {{ siteConfig.siteMeta.title }}
         </h1>
         <p class="dark:text-zinc-300">
-          {{ blogsPage.description }}
+          {{ siteConfig.siteMeta.description }}
         </p>
       </div>
       <div class="px-6 justify-self-center">

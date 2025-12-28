@@ -4,7 +4,7 @@
       <template v-for="link in links" :key="link.url">
         <NuxtLink
           :to="link.url"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 backdrop-blur-md border border-white/40 text-zinc-700 text-sm font-semibold transition-all duration-300 hover:bg-white/60 hover:border-white/60 hover-text-primary hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800/40 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-slate-800/60 dark:hover:text-white">
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 backdrop-blur-md border border-white/40 text-zinc-700 text-sm font-semibold transition-all duration-300 hover:bg-white/60 hover:border-white/60 hover-text-black hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800/40 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-slate-800/60 dark:hover:text-white">
           <span v-if="iconFor(link)" class="inline-flex items-center justify-center w-5 h-5">
             <Icon
               v-if="iconFor(link).name"

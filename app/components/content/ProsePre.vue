@@ -91,7 +91,7 @@ const showHeader = computed(() => props.filename || props.language);
 <style scoped>
 /* 自定义滚动条样式 */
 .custom-scrollbar::-webkit-scrollbar {
-  height: 4px;
+  height: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

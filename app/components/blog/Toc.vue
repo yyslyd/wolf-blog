@@ -2,9 +2,26 @@
 const { path } = useRoute();
 const articles = await queryCollection("content").path(path).first();
 
-const links = articles?.body?.toc?.links || [];
+interface TocLink {
+  id: string;
+  text: string;
+  children?: TocLink[];
+}
+
+const links = (articles?.body?.toc?.links || []) as TocLink[];
 
 const activeId = ref("");
+
+const flattenLinks = (links: TocLink[]) => {
+  let flat: TocLink[] = [];
+  links.forEach((link) => {
+    flat.push(link);
+    if (link.children) {
+      flat = flat.concat(flattenLinks(link.children));
+    }
+  });
+  return flat;
+};
 
 onMounted(() => {
   const observer = new IntersectionObserver(
@@ -18,7 +35,7 @@ onMounted(() => {
     { rootMargin: "-100px 0% -80% 0%" },
   );
 
-  links.forEach((link) => {
+  flattenLinks(links).forEach((link) => {
     const el = document.getElementById(link.id);
     if (el) observer.observe(el);
   });
@@ -37,18 +54,48 @@ onMounted(() => {
         Table Of Content
       </h3>
       <nav class="space-y-1">
-        <NuxtLink
-          v-for="link in links"
-          :key="link.id"
-          :to="`#${link.id}`"
-          class="block text-sm py-1.5 px-3 rounded-xl transition-all duration-200"
-          :class="[
-            activeId === link.id
-              ? 'text-violet-600 dark:text-violet-400 bg-violet-500/10 font-bold translate-x-1'
-              : 'text-zinc-600 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-500/5',
-          ]">
-          {{ link.text }}
-        </NuxtLink>
+        <template v-for="link in links" :key="link.id">
+          <NuxtLink
+            :to="`#${link.id}`"
+            class="block text-sm py-1.5 px-3 rounded-xl transition-all duration-200"
+            :class="[
+              activeId === link.id
+                ? 'text-violet-600 dark:text-violet-400 bg-violet-500/10 font-bold translate-x-1'
+                : 'text-zinc-600 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-500/5',
+            ]">
+            {{ link.text }}
+          </NuxtLink>
+
+          <div v-if="link.children" class="ml-3 space-y-1">
+            <template v-for="child in link.children" :key="child.id">
+              <NuxtLink
+                :to="`#${child.id}`"
+                class="block text-xs py-1.5 px-3 rounded-xl transition-all duration-200"
+                :class="[
+                  activeId === child.id
+                    ? 'text-violet-600 dark:text-violet-400 bg-violet-500/10 font-bold translate-x-1'
+                    : 'text-zinc-500 dark:text-zinc-500 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-500/5',
+                ]">
+                {{ child.text }}
+              </NuxtLink>
+
+              <div v-if="child.children" class="ml-3 space-y-1">
+                <NuxtLink
+                  v-for="grandchild in child.children"
+                  :key="grandchild.id"
+                  :to="`#${grandchild.id}`"
+                  class="block text-xs py-1.5 px-3 rounded-xl transition-all duration-200"
+                  :class="[
+                    activeId === grandchild.id
+                      ? 'text-violet-600 dark:text-violet-400 bg-violet-500/10 font-bold translate-x-1'
+                      : 'text-zinc-400 dark:text-zinc-600 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-500/5',
+                  ]">
+                  {{ grandchild.text }}
+                </NuxtLink>
+              </div>
+            </template>
+          </div>
+        </template>
       </nav>
     </div>
   </div>

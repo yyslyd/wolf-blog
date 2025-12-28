@@ -17,12 +17,23 @@ function isActive(path: string) {
     <div class="flex justify-center px-6 container max-w-5xl mx-auto items-center h-full">
       <nav class="items-center">
         <div
-          class="inline-flex items-center gap-3 bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.1)] border border-white/40 dark:border-white/5 rounded-full px-3 py-2 transition-all duration-300 hover:shadow-xl">
+          class="inline-flex items-center gap-3 bg-white/70 dark:bg-slate-900/50 backdrop-blur-xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.1)] border border-zinc-200/50 dark:border-white/5 rounded-full px-3 py-2 transition-all duration-300 hover:shadow-xl">
           <div class="hidden sm:flex items-center justify-center h-8 w-8 rounded-full bg-white/0">
             <NuxtLink
               to="/"
-              class="relative rounded-full hover:bg-violet-400/40 dark:hover:bg-violet-200/40 p-1">
-              <Icon name="fa-solid:cat" size="16" class="text-zinc-700 dark:text-zinc-200" />
+              class="relative rounded-full p-1"
+              :class="{
+                'shadow-md dark:shadow-sm dark:shadow-zinc-50 scale-105': isActive('/'),
+                'hover:bg-violet-400/40 dark:hover:bg-violet/10': !isActive('/'),
+              }">
+              <Icon
+                name="fa-solid:cat"
+                size="16"
+                class="text-zinc-700 dark:text-zinc-200"
+                :class="{
+                  'shadow-sm scale-105 font-bold': isActive('/'),
+                  'hover:bg-violet-400/40 dark:hover:bg-violet/10': !isActive('/'),
+                }" />
             </NuxtLink>
           </div>
 
@@ -30,17 +41,14 @@ function isActive(path: string) {
             <li v-for="link in siteConfig.navbar.links" :key="link.path">
               <NuxtLink
                 :to="link.path"
-                class="relative px-2 py-1 rounded-full transition-all duration-200 flex items-center"
+                class="relative px-2 py-1 rounded-full transition-all duration-200 flex items-center text-zinc-700 dark:text-zinc-200"
                 :class="{
-                  'bg-gradient-to-r from-violet-500/80 to-fuchsia-500/80 text-white shadow-md scale-105':
-                    isActive(link.path),
-                  'hover:bg-white/50 dark:hover:bg-white/10': !isActive(link.path),
+                  'shadow-md dark:shadow-sm dark:shadow-zinc-50 scale-105 font-bold': isActive(
+                    link.path,
+                  ),
+                  'hover:bg-violet-400/40 dark:hover:bg-violet/10': !isActive(link.path),
                 }">
-                <Icon
-                  v-if="link.icon"
-                  :name="link.icon"
-                  size="16"
-                  class="text-zinc-700 dark:text-zinc-200 mr-2" />
+                <Icon v-if="link.icon" :name="link.icon" size="16" class="mr-2" />
                 <span class="hidden sm:inline-block px-auto">{{ link.name }}</span>
                 <span class="sm:hidden">{{ link.name }}</span>
               </NuxtLink>
@@ -54,9 +62,9 @@ function isActive(path: string) {
                 class="relative h-9 w-9 rounded-full bg-white/20 dark:bg-white/5 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/40 dark:hover:bg-white/10 focus:outline-none shadow-sm border border-white/20"
                 @click="onClick(colorMode.value === 'light' ? 'dark' : 'light')">
                 <Icon
-                  name="fa-regular:sun"
+                  name="fa-regular:moon"
                   size="18"
-                  class="icon-svg transition-all duration-300 text-yellow-400"
+                  class="icon-svg transition-all duration-300 text-zinc-700 dark:text-white-200"
                   :class="
                     colorMode.value === 'light'
                       ? 'opacity-100 scale-100'
@@ -64,9 +72,9 @@ function isActive(path: string) {
                   " />
 
                 <Icon
-                  name="fa-regular:moon"
+                  name="fa-regular:sun"
                   size="18"
-                  class="icon-svg absolute transition-all duration-300 text-indigo-200"
+                  class="icon-svg absolute transition-all duration-300 text-yellow-400"
                   :class="
                     colorMode.value === 'dark'
                       ? 'opacity-100 scale-100'

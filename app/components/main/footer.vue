@@ -88,7 +88,6 @@ const fetchHitokoto = async () => {
   try {
     const resp = await fetch(buildHitokotoUrl());
     const data = await resp.json();
-    console.log(data);
     quote.value = data.hitokoto || "";
     from.value = data.from || "";
     fromWho.value = data.from_who || "";

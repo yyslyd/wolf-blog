@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { BlogPost } from "@/types/blog";
 import { seoData } from "~/data";
+import { formatDate } from "~/utils/helper";
 
 const { path } = useRoute();
 
@@ -53,7 +54,7 @@ useHead({
         :title="data.title"
         :image="data.image"
         :alt="data.alt"
-        :date="data.date"
+        :date="formatDate(articles.date)"
         :description="data.description"
         :tags="data.tags" />
       <div

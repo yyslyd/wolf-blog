@@ -40,6 +40,7 @@ const siteConfig = {
   theme: {
     background: "/background.webp",
     backgroundMobile: "",
+    color: "#bd83f3",
   },
 
   footer: {

@@ -11,7 +11,7 @@ import SocialLinks from "./SocialLinks.vue";
         <div class="mb-8">
           <div class="relative h-32 w-32 group">
             <div
-              class="absolute inset-0 bg-gradient-to-tr from-violet-500 to-fuchsia-500 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+              class="absolute inset-0 bg-primary-gradient rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
             <NuxtImg
               :src="siteConfig.profile.avatar"
               alt="avatar"
@@ -28,8 +28,7 @@ import SocialLinks from "./SocialLinks.vue";
           </h1>
 
           <div class="mt-4 flex justify-center">
-            <div
-              class="h-1 w-12 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full opacity-60"></div>
+            <div class="h-1 w-12 bg-primary-gradient-r rounded-full opacity-60"></div>
           </div>
 
           <p

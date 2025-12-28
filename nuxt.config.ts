@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 
   colorMode: {
     classSuffix: "",
-    preference: "dark",
+    preference: "system",
     fallback: "light",
   },
 
@@ -80,10 +80,14 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         toc: {
-          depth: 3,
+          depth: 4,
         },
         highlight: {
-          theme: "dracula",
+          theme: {
+            default: "github-light",
+            dark: "github-dark",
+            light: "github-light",
+          },
           langs: ["c"],
         },
         remarkPlugins: {

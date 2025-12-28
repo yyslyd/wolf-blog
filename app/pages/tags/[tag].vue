@@ -31,8 +31,7 @@ const formattedData = computed(() => {
       description: articles.description || "no-description available",
       image: meta.image || "/blogs-img/blog.jpg",
       alt: meta.alt || "no alter data available",
-      ogImage: meta.ogImage || "/blogs-img/blog.jpg",
-      date: meta.date || "not-date-available",
+      date: formatDate(articles.date) || "not-date-available",
       tags: meta.tags || [],
       published: meta.published || false,
     };
@@ -65,12 +64,12 @@ defineOgImage({
     <div class="flex flex-col items-center mb-12">
       <NuxtLink
         to="/tags"
-        class="flex items-center gap-2 text-sm font-bold text-violet-600 dark:text-violet-400 hover:underline mb-4">
+        class="flex items-center gap-2 text-sm font-bold text-primary hover:underline mb-4">
         <Icon name="heroicons:arrow-left-20-solid" />
         Back to all tags
       </NuxtLink>
-      <div class="p-3 bg-violet-500/10 rounded-2xl mb-4">
-        <Icon name="fa-solid:tag" size="2.5em" class="text-violet-600 dark:text-violet-400" />
+      <div class="p-3 bg-primary-10 rounded-2xl mb-4">
+        <Icon name="fa-solid:tag" size="2.5em" class="text-primary" />
       </div>
       <h1
         class="text-4xl md:text-5xl font-bold text-zinc-800 dark:text-zinc-100 mb-4 tracking-tight">
@@ -91,7 +90,6 @@ defineOgImage({
         :description="post.description"
         :image="post.image"
         :alt="post.alt"
-        :og-image="post.ogImage"
         :tags="post.tags"
         :published="post.published" />
       <BlogEmpty v-if="formattedData.length === 0" />

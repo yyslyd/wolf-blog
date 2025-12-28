@@ -33,7 +33,6 @@ const formattedData = computed(() => {
       description: articles.description || "no-description available",
       image: meta.image || "/not-found.jpg",
       alt: meta.alt || "no alter data available",
-      ogImage: meta.ogImage || "/not-found.jpg",
       date: meta.date || "not-date-available",
       tags: meta.tags || [],
       published: meta.published || false,
@@ -57,11 +56,8 @@ useHead({
   <section class="pb-10 px-4">
     <div class="flex flex-row items-center justify-between pt-10 pb-6">
       <div class="flex items-center space-x-3">
-        <div class="p-2 bg-violet-500/10 rounded-lg">
-          <Icon
-            name="mdi:star-three-points-outline"
-            size="1.5em"
-            class="text-violet-600 dark:text-violet-400" />
+        <div class="p-2 bg-primary-10 rounded-lg">
+          <Icon name="mdi:star-three-points-outline" size="1.5em" class="text-primary" />
         </div>
         <h2 class="text-3xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
           Recent Posts
@@ -69,7 +65,7 @@ useHead({
       </div>
       <NuxtLink
         to="/blogs"
-        class="group flex items-center gap-1 text-sm font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-700 transition-colors">
+        class="group flex items-center gap-1 text-sm font-semibold text-primary hover-text-primary transition-colors">
         查看全部文章
         <Icon
           name="heroicons:arrow-right-20-solid"
@@ -88,7 +84,6 @@ useHead({
             :description="post.description"
             :image="post.image"
             :alt="post.alt"
-            :og-image="post.ogImage"
             :tags="post.tags"
             :published="post.published" />
         </div>

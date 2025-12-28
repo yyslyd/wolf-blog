@@ -1,24 +1,114 @@
+@import url("https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Regular/result.css");
+@import url("https://fontsapi.zeoseven.com/521/main/result.css");
+/* @import url("https://fontsapi.zeoseven.com/292/main/result.css"); */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
+/* @import "@chinese-fonts/maple-mono-cn/dist/MapleMono-CN-Regular/results.css"; */
 
 @custom-variant dark (&:where(.dark, .dark *));
 /* @import "tailwindcss/preflight";
 @tailwind utilities; */
-/* @import url("https://fonts.rhen.cloud/maplemono-cn-regular/result.css"); */
-/* @import url("https://chinese-fonts-cdn.deno.dev/packages/maple-mono-cn/dist/MapleMono-CN-Regular/result.css"); */
 /* @import "tailwindcss/preflight"; */
 /* @imoprt "utilities"; */
-/* @import url("https://fontsapi.zeoseven.com/292/main/result.css"); */
 
 /* @theme {
   --font-roboto: "LXGW WenKai", sans-serif;
-}
-body {
-  font-familt: var(--font-roboto);
 } */
 
-/* @theme {
-  --font-roboto: "Maple Mono CN", sans-serif;
+@theme {
+  --font-roboto: "JetBrains Maple Mono", sans-serif;
+  --font-display: "JetBrains Maple Mono", sans-serif;
+  --font-mono: "JetBrains Maple Mono", monospace;
   --font-display--font-feature-settings: "zero", "cv03", "ss03", "ss05", "cv97", "cv98";
-} */
+}
+html {
+  /* font-family: var(--font-roboto); */
+  font-family: "JetBrains Maple Mono";
+  font-weight: normal;
+}
+
+.text-primary {
+  color: var(--site-primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--site-primary) !important;
+}
+
+.border-primary {
+  border-color: var(--site-primary) !important;
+}
+
+.bg-primary-10 {
+  /* Use computed RGB to form translucent background when available */
+  background-color: rgba(var(--site-primary-rgb), 0.08);
+  /* Fallback for browsers that support color-mix (optional) */
+  background-color: color-mix(in srgb, var(--site-primary) 8%, transparent);
+}
+
+.hover-bg-primary:hover {
+  background-color: var(--site-primary) !important;
+}
+
+.hover-text-primary:hover {
+  color: var(--site-primary) !important;
+}
+
+/* Support group hover coloring: apply to elements with class `group-text-primary` when parent has `group` */
+.group:hover .group-text-primary {
+  color: var(--site-primary) !important;
+}
+
+/* Selection helper */
+.selection-bg-primary::selection {
+  background-color: rgba(var(--site-primary-rgb), 0.3);
+}
+
+/* Primary gradient utilities */
+.bg-primary-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--site-primary),
+    color-mix(in srgb, var(--site-primary) 65%, white 35%)
+  );
+}
+
+.bg-primary-gradient-r {
+  background-image: linear-gradient(
+    90deg,
+    var(--site-primary),
+    color-mix(in srgb, var(--site-primary) 65%, white 35%)
+  );
+}
+
+/* Prose (content) color overrides to follow site primary */
+.prose a {
+  color: var(--site-primary);
+}
+.dark .prose a {
+  color: var(--site-primary);
+}
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.prose blockquote {
+  border-left-width: 4px;
+  border-left-style: solid;
+  border-left-color: var(--site-primary);
+  background-color: rgba(var(--site-primary-rgb), 0.05);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.prose code {
+  color: var(--site-primary);
+  background-color: rgba(var(--site-primary-rgb), 0.08);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.prose pre {
+  background-color: var(--code-bg, #111827);
+}

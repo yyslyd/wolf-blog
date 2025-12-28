@@ -39,11 +39,8 @@ const versions = computed(() => {
   <section class="py-12 px-4">
     <div class="max-w-xl mx-auto">
       <div class="flex items-center gap-3 mb-6">
-        <div class="p-2 bg-violet-500/10 rounded-lg">
-          <Icon
-            name="heroicons:cpu-chip"
-            size="1.5em"
-            class="text-violet-600 dark:text-violet-400" />
+        <div class="p-2 bg-primary-10 rounded-lg">
+          <Icon name="heroicons:cpu-chip" size="1.5em" class="text-primary" />
         </div>
         <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">技术信息</h2>
       </div>
@@ -63,7 +60,7 @@ const versions = computed(() => {
               <Icon
                 v-if="item.icon"
                 :name="item.icon"
-                class="w-4 h-4 text-zinc-400 group-hover:text-violet-500 transition-colors" />
+                class="w-4 h-4 text-zinc-400 group-text-primary transition-colors" />
               <span class="text-zinc-800 dark:text-zinc-200 text-sm font-bold">{{
                 item.value
               }}</span>

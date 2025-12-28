@@ -1,11 +1,11 @@
 ---
-title: "在Windows下配置Fish"
+title: "在 Windows 下配置 Fish"
 published: true
 date: 2025-10-03
 updatedDate: 2025-10-03
-description: "在Windows下配置Fish"
+description: "在 Windows 下配置 Fish"
 image: https://img.rhen.cloud/file/Blog/1761401028478_PixPin_2025-10-03_15-44-52.png
-alt: "在Windows下配置Fish"
+alt: "在 Windows 下配置 Fish"
 tags: ["Development", "Windows", "Fish"]
 categories: ["Technology"]
 ---
@@ -18,15 +18,15 @@ categories: ["Technology"]
 
 ## 安装 Fish
 
-依据[Fish 官网](https://fishshell.com/)，我们有三种方式在 Windows 上安装 Fish：
+依据 [Fish 官网](https://fishshell.com/)，我们有三种方式在 Windows 上安装 Fish：
 
 - 通过 Cygwin 安装
 - 通过 MSYS2 安装
 - 通过 WSL 安装
 
-~~作为一个Arch用户，肯定是秒选用pacman做包管理的MSYS2。~~
+~~作为一个 Arch 用户，肯定是秒选用 pacman 做包管理的 MSYS2。~~
 
-### 安装MSYS2
+### 安装 MSYS2
 
 ```bash
 scoop install msys2
@@ -36,22 +36,22 @@ scoop install msys2
 
 依照提示运行`msys2`
 
-这样就成功进入MSYS2的环境了。
+这样就成功进入 MSYS2 的环境了。
 
 ![PixPin_2025-10-03_15-29-07.png](https://img.rhen.cloud/file/Blog/1761401002178_PixPin_2025-10-03_15-29-07.png)
 
-### 配置MSYS2
+### 配置 MSYS2
 
 #### 更换软件源
 
-在MSYS2环境下运行：
+在 MSYS2 环境下运行：
 
 ```bash
 sed -i "s#mirror.msys2.org/#mirrors.ustc.edu.cn/msys2/#g" /etc/pacman.d/mirrorlist*
 pacman -Syy
 ```
 
-#### 更改home 目录
+#### 更改 home 目录
 
 修改`/etc/nsswitch.conf`文档
 
@@ -71,12 +71,6 @@ db_gecos: cygwin desc
 # End /etc/nsswitch.conf
 ```
 
-### 安装Fish
-
-```bash
-pacman -S fish
-```
-
-完成，可以愉快的使用Fish了！
+完成，可以愉快的使用 Fish 了！
 
 ![PixPin_2025-10-03_15-44-52.png](https://img.rhen.cloud/file/Blog/1761401028478_PixPin_2025-10-03_15-44-52.png)

@@ -98,11 +98,7 @@ export default defineNuxtConfig({
           depth: 4,
         },
         highlight: {
-          theme: {
-            default: "github-light",
-            dark: "github-dark",
-            light: "github-light",
-          },
+          theme: "github-dark",
           langs: ["bash", "c", "python"],
         },
         remarkPlugins: {

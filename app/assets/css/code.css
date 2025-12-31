@@ -1,19 +1,21 @@
 @layer utilities {
-  pre code .line {
-    @apply block relative min-h-[1rem];
+  .line {
+    @apply block relative min-h-[1rem] pl-[6.25rem];
   }
 }
 
-pre code .line::before {
+.line::before {
   content: attr(data-line);
   position: absolute;
-  top: 0;
-  left: -6.25rem;
-  color: #cccccc;
+  left: 0;
+  width: 5.25rem;
+  padding-right: 1rem;
+  text-align: right;
+  color: #999999;
   user-select: none;
+  font-size: 0.85em;
 }
 
-.dark pre code .line::before {
-  color: #777777;
-  opacity: 0.43;
+.dark .line::before {
+  color: #666666;
 }

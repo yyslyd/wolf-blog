@@ -6,17 +6,19 @@ export default defineNuxtConfig({
   srcDir: "app",
   css: ["./app/assets/css/main.css"],
 
-  components: [
-    {
-      path: "~/components/content",
-      extensions: ["vue"],
-      prefix: "",
-    },
-    {
-      path: "~/components",
-      extensions: ["vue"],
-    },
-  ],
+  components: {
+    dirs: [
+      {
+        path: "~/components",
+        extensions: ["vue"],
+      },
+      {
+        path: "~/components/content",
+        extensions: ["vue"],
+        prefix: "Prose",
+      },
+    ],
+  },
 
   future: {
     compatibilityVersion: 4,

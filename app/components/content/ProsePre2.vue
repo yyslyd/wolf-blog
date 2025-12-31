@@ -36,6 +36,8 @@ const props = defineProps({
   },
 });
 
+console.log(props.code);
+
 const meta = computed(() => {
   if (!props.meta) return {};
 
@@ -126,7 +128,37 @@ if (import.meta.client) {
   onMounted(() => {
     if (!codeblock.value) return;
 
-    const lines = codeblock.value.querySelectorAll(".line");
+    // 兼容不同的代码块结构（包括 text 类型）
+    let lines = Array.from(codeblock.value.querySelectorAll(".line"));
+
+    // 如果没有 .line 元素，按 \n 分割创建行
+    if (lines.length === 0) {
+      const html = codeblock.value.innerHTML;
+      const textLines = html.split("\n");
+
+      // 清空预先存在的内容
+      codeblock.value.innerHTML = "";
+
+      // 为每一行创建包装元素
+      textLines.forEach((lineHtml, index) => {
+        const lineEl = document.createElement("div");
+        lineEl.className = "line";
+        lineEl.innerHTML = lineHtml;
+        lineEl.setAttribute("data-line", String(index + 1));
+        codeblock.value!.appendChild(lineEl);
+      });
+
+      lines = Array.from(codeblock.value.querySelectorAll(".line"));
+    } else {
+      // 原有逻辑：为 .line 元素设置 data-line
+      lines.forEach((line, index) => {
+        if (!line.getAttribute("data-line")) {
+          line.setAttribute("data-line", String(index + 1));
+        }
+      });
+    }
+
+    // 隐藏首尾空行
     let firstNonEmptyIndex = -1;
     let lastNonEmptyIndex = -1;
 
@@ -141,12 +173,6 @@ if (import.meta.client) {
 
     // 隐藏首尾空行
     lines.forEach((line, index) => {
-      // 设置行号
-      if (!line.getAttribute("data-line")) {
-        line.setAttribute("data-line", String(index + 1));
-      }
-
-      // 隐藏首尾空行
       if (index < firstNonEmptyIndex || index > lastNonEmptyIndex) {
         (line as HTMLElement).style.display = "none";
       }
@@ -294,7 +320,7 @@ if (import.meta.client) {
 }
 
 :deep(code) {
-  font-family: "Fira Code", "Monaco", monospace;
+  /* font-family: "JetBrains Mono", "Fira Code", "Monaco", monospace; */
   font-size: 0.95em;
   letter-spacing: 0.01em;
   font-variant-ligatures: common-ligatures;

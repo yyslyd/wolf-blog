@@ -26,23 +26,25 @@ const bgStyle = computed(() =>
 </script>
 
 <template>
-  <!-- <link
+  <UApp>
+    <!-- <link
     rel="stylesheet"
     href="https://chinese-fonts-cdn.deno.dev/packages/maple-mono-cn/dist/MapleMono-CN-Regular/result.css" /> -->
-  <meta name="color-scheme" content="light dark" />
-  <div class="relative">
-    <div
-      v-if="currentBg"
-      class="fixed inset-0 -z-20 bg-cover bg-center pointer-events-none"
-      :style="bgStyle" />
+    <meta name="color-scheme" content="light dark" />
+    <div class="relative">
+      <div
+        v-if="currentBg"
+        class="fixed inset-0 -z-20 bg-cover bg-center pointer-events-none"
+        :style="bgStyle" />
 
-    <div class="dark:text-zinc-300">
-      <NuxtLoadingIndicator />
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
+      <div class="dark:text-zinc-300">
+        <NuxtLoadingIndicator />
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </div>
     </div>
-  </div>
+  </UApp>
 </template>
 
 <style>

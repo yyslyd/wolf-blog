@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     // "@nuxtjs/tailwindcss",
     "@formkit/auto-animate",
+    "@nuxt/ui",
     // '@stefanobartoletti/nuxt-social-share',
   ],
 
@@ -88,7 +89,7 @@ export default defineNuxtConfig({
             dark: "github-dark",
             light: "github-light",
           },
-          langs: ["c"],
+          langs: ["bash", "c"],
         },
         remarkPlugins: {
           "remark-gfm": {},

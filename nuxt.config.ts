@@ -39,6 +39,19 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      sourcemap: false,
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ["vue", "vue-router", "@nuxt/content"],
+            ui: ["@nuxt/ui", "@nuxt/icon"],
+            utils: ["fuse.js"],
+          },
+        },
+      },
+    },
   },
 
   app: {
@@ -88,8 +101,10 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/rss.xml"],
+      routes: ["/", "/rss.xml", "/sitemap.xml"],
+      ignore: ["/404"],
     },
+    minify: true,
   },
 
   // fonts: {},

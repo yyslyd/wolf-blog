@@ -71,16 +71,6 @@ useHead({
     },
   ],
 });
-
-// Generate OG Image
-const siteData = useSiteConfig();
-defineOgImage({
-  props: {
-    title: "Archive",
-    description: "Here you will find all the blog posts I have written & published on this site.",
-    siteName: siteData.url,
-  },
-});
 </script>
 
 <template>

@@ -2,8 +2,10 @@
 .output
 .nuxt
 .data
+dist/
 # Node dependencies
 node_modules
 # System files
 *.log
+
 .env

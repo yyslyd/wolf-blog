@@ -48,16 +48,6 @@ useHead({
     },
   ],
 });
-
-// Generate OG Image
-const siteData = useSiteConfig();
-defineOgImage({
-  props: {
-    title: `Tag: ${tag.value?.toUpperCase()}`,
-    description: `Explore all posts tagged with ${tag.value}`,
-    siteName: siteData.url,
-  },
-});
 </script>
 
 <template>

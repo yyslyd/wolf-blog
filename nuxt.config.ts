@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@vueuse/nuxt",
     "@nuxtjs/robots",
-    "@nuxtjs/seo",
+    // "@nuxtjs/seo",
     "@nuxtjs/sitemap",
     "@nuxt/content",
     "@nuxtjs/color-mode",
@@ -65,16 +65,9 @@ export default defineNuxtConfig({
   // robots: { groups: [{ userAgent: ["GPTBot", "ChatGPT-User"], disallow: ["/"] }] },
 
   sitemap: {
-    sitemapsPathPrefix: "/",
-    zeroRuntime: true,
-    sitemaps: {
-      posts: {
-        include: ["/blog/**"],
-      },
-    },
+    sources: ["/api/__sitemap__/urls"],
+    excludeAppSources: true,
     autoLastmod: true,
-    // sources: ["/api/sitemap"],
-    // sources: ["/api/__sitemap__/urls"],
   },
 
   typescript: {

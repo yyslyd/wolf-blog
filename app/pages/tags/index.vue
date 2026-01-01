@@ -26,16 +26,6 @@ useHead({
     },
   ],
 });
-
-// Generate OG Image
-const siteData = useSiteConfig();
-defineOgImage({
-  props: {
-    title: "Tags",
-    description: "Explore all the tags used in the blog posts.",
-    siteName: siteData.url,
-  },
-});
 </script>
 
 <template>

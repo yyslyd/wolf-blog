@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { BlogPost } from "@/types/blog";
 import Comment from "~/components/blog/Comment.vue";
-import { seoData } from "~/data";
-import { formatDate } from "~/utils/helper";
+import siteConfig from "~/config";
 
 const { path } = useRoute();
 
@@ -16,7 +15,7 @@ const data = computed<BlogPost>(() => {
   return {
     title: articles.value?.title || "no-title available",
     description: articles.value?.description || "no-description available",
-    image: articles.value?.image || "/not-found.jpg",
+    image: articles.value?.image || "",
     alt: articles.value?.alt || "no alter data available",
     date: articles.value?.date || "not-date-available",
     tags: articles.value?.tags || [],
@@ -27,18 +26,15 @@ const data = computed<BlogPost>(() => {
 });
 
 useHead({
-  title: data.value.title || "",
+  title: siteConfig.siteMeta.title || "",
   meta: [
-    { name: "description", content: data.value.description },
-    {
-      name: "description",
-      content: data.value.description,
-    },
+    { name: "description", content: siteConfig.siteMeta.description },
+    { name: "author", content: siteConfig.siteMeta.author },
   ],
   link: [
     {
       rel: "canonical",
-      href: `${seoData.mySite}/${path}`,
+      href: `${siteConfig.siteMeta.url}/${path}`,
     },
   ],
 });

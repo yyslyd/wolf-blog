@@ -10,7 +10,7 @@ tags: ["Development", "Windows", "Fish"]
 categories: ["Technology"]
 ---
 
-## 前言
+# 前言
 
 在经历了 Linux 下一系列的生态折磨后，我最终回归了 Windows 的怀抱。
 

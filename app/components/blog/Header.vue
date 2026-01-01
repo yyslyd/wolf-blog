@@ -53,6 +53,7 @@ withDefaults(defineProps<Props>(), {
       <div
         class="absolute inset-0 bg-linear-to-tr from-violet-500/20 to-fuchsia-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       <NuxtImg
+        v-if="image"
         :src="image || ''"
         :alt="alt || ''"
         width="1200"

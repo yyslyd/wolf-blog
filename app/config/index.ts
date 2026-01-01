@@ -1,10 +1,13 @@
 const siteConfig = {
   siteMeta: {
     title: "RhenCloud's Blog",
-    description:
-      "Welcome To My Blog Site. Get Web Development, Javascript, Typescript, NodeJs, Vue, and Nuxt, Related Articles, Tips, Learning resources and more.",
+    description: "一个普普通通的技术博客，分享技术，记录日常，传递一些有趣的想法。",
+    keywords: ["Technology", "Blog", "Development", "Programming"],
     author: "RhenCloud",
     url: "https://blog.rhen.cloud",
+    email: "i@rhen.cloud",
+    lang: "zh-CN",
+    favicon: "/favicon.svg",
   },
 
   hero: {
@@ -14,8 +17,6 @@ const siteConfig = {
 
   profile: {
     avatar: "/avatar.webp",
-    bio: "",
-    email: "i@rhen.cloud",
     birthday: "2010-03-28",
   },
 

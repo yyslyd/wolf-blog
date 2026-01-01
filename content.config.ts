@@ -9,15 +9,15 @@ export default defineContentConfig({
     content: defineCollection({
       ...asRobotsCollection({
         type: "page",
-        source: "blogs/**/*.md",
+        source: "posts/**/*.md",
       }),
       ...asSitemapCollection({
         type: "page",
-        source: "blogs/**/*.md",
+        source: "posts/**/*.md",
       }),
       ...asSeoCollection({
         type: "page",
-        source: "blogs/**/*.md",
+        source: "posts/**/*.md",
       }),
       schema: z.object({
         published: z.boolean(),

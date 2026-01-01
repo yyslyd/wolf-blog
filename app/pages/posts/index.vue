@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Fuse from "fuse.js";
+import { getRandomFallbackImage } from "~/utils/helper";
 // import type { BlogPost } from "~/types/blog";
 
 const { data } = await useAsyncData("all-blog-post", () => queryCollection("content").all());
@@ -15,7 +16,7 @@ const formattedData = computed(() => {
         path: articles.path,
         title: articles.title || "no-title available",
         description: articles.description || "no-description available",
-        image: articles.image || "/not-found.jpg",
+        image: articles.image || getRandomFallbackImage(),
         alt: articles.alt || "no alter data available",
         date: articles.date || "not-date-available",
         tags: articles.tags || [],

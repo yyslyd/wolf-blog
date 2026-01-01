@@ -55,8 +55,9 @@ export default defineNuxtConfig({
         { name: "theme-color", content: siteConfig.theme.color },
       ],
       link: [
+        { rel: "icon", href: siteConfig.siteMeta.favicon, type: "image/svg+xml" },
         { rel: "canonical", href: siteConfig.siteMeta.url },
-        { rel: "alternate", hreflang: "zh-CN", href: siteConfig.siteMeta.url },
+        { rel: "alternate", hreflang: siteConfig.siteMeta.lang, href: siteConfig.siteMeta.url },
         { rel: "dns-prefetch", href: siteConfig.siteMeta.url },
         { rel: "preconnect", href: siteConfig.siteMeta.url },
       ],
@@ -65,11 +66,10 @@ export default defineNuxtConfig({
     layoutTransition: { name: "layout", mode: "out-in" },
   },
 
-  // robots: { groups: [{ userAgent: ["GPTBot", "ChatGPT-User"], disallow: ["/"] }] },
+  robots: { groups: [{ userAgent: ["GPTBot", "ChatGPT-User"], disallow: ["/"] }] },
 
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
-    // 移除 excludeAppSources，允许自动发现页面
     autoLastmod: true,
   },
 
@@ -92,17 +92,11 @@ export default defineNuxtConfig({
     minify: true,
   },
 
-  // fonts: {},
-
   colorMode: {
     classSuffix: "",
     preference: "system",
     fallback: "light",
   },
-
-  // build: {
-  //   transpile: ["@nuxt/ui"],
-  // },
 
   content: {
     experimental: { nativeSqlite: true },
@@ -119,9 +113,6 @@ export default defineNuxtConfig({
           "remark-gfm": {},
           "remark-rehype": {},
         },
-        // rehypePlugins: {
-        //   "rehype-prism": {},
-        // },
       },
     },
   },

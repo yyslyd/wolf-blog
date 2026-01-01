@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { formatDate, getRandomFallbackImage } from "~/utils/helper";
+
 // Function to parse dates in the format "1st Mar 2023"
 function parseCustomDate(dateStr: string): Date {
   // Remove ordinal indicators (st, nd, rd, th)
@@ -10,6 +12,7 @@ function parseCustomDate(dateStr: string): Date {
 // Get Last 6 Publish Post from the content/blog directory
 const { data } = await useAsyncData("recent-post", () =>
   queryCollection("content")
+    .where("published", "=", true)
     .all()
     .then((data) => {
       return data
@@ -23,29 +26,20 @@ const { data } = await useAsyncData("recent-post", () =>
 );
 
 const formattedData = computed(() => {
-  return data.value?.map((articles) => {
-    return {
-      path: articles.path,
-      title: articles.title || "no-title available",
-      description: articles.description || "no-description available",
-      image: articles.image || "/not-found.jpg",
-      alt: articles.alt || "no alter data available",
-      date: articles.date || "not-date-available",
-      tags: articles.tags || [],
-      published: articles.published || false,
-    };
-  });
-});
-
-useHead({
-  title: "Home",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Welcome To My Blog Site. Get Web Development, Javascript, Typescript, NodeJs, Vue, and Nuxt, Related Articles, Tips, Learning resources and more.",
-    },
-  ],
+  return (
+    data.value?.map((articles) => {
+      return {
+        path: articles.path,
+        title: articles.title || "no-title available",
+        description: articles.description || "no-description available",
+        image: articles.image || getRandomFallbackImage(),
+        alt: articles.alt || "no alter data available",
+        date: articles.date || "not-date-available",
+        tags: articles.tags || [],
+        published: articles.published || false,
+      };
+    }) || []
+  );
 });
 </script>
 
@@ -77,7 +71,7 @@ useHead({
           <BlogCard
             :path="post.path"
             :title="post.title"
-            :date="post.date"
+            :date="formatDate(post.date)"
             :description="post.description"
             :image="post.image"
             :alt="post.alt"

@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const docs = await queryCollection(event, "content").all();
+  const docs = await queryCollection(event, "content").where("published", "==", true).all();
 
   const urls: Array<{ loc: string; lastmod: string }> = [];
 

@@ -27,11 +27,11 @@ withDefaults(defineProps<Props>(), {
         </h2>
         <div class="text-black dark:text-zinc-300 text-sm mt-2 mb-1 md:flex md:space-x-6">
           <div class="flex items-center">
-            <LogoDate class="-translate-y-[10%]" />
+            <Icon name="mdi:calendar" class="mr-1 w-4 h-4" />
             <p>{{ date }}</p>
           </div>
           <div class="flex items-center gap-1 flex-wrap">
-            <LogoTag />
+            <Icon name="mdi:tag" class="w-4 h-4" />
             <p
               v-for="tag in tags"
               :key="tag"
@@ -42,7 +42,7 @@ withDefaults(defineProps<Props>(), {
         </div>
         <div class="flex group-hover:underline text-sky-700 dark:text-sky-400 items-center pt-2">
           <p>Read More</p>
-          <LogoArrow />
+          <Icon name="mdi:arrow-right" class="ml-1 w-4 h-4" />
         </div>
       </div>
     </NuxtLink>

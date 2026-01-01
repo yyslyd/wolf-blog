@@ -24,7 +24,7 @@ withDefaults(defineProps<Props>(), {
       <div class="flex items-center justify-center gap-3 mb-6">
         <div
           class="flex items-center text-sm font-bold text-violet-600 dark:text-violet-400 bg-violet-500/10 px-3 py-1 rounded-full border border-violet-500/20">
-          <LogoDate class="mr-2 w-4 h-4" />
+          <Icon name="mdi:calendar" class="mr-2 w-4 h-4" />
           {{ date }}
         </div>
         <div class="flex items-center gap-2 flex-wrap">

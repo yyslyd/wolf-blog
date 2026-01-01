@@ -9,3 +9,7 @@ node_modules
 *.log
 
 .env
+
+bun.lock
+yarn.lock
+

@@ -37,7 +37,7 @@ withDefaults(defineProps<Props>(), {
       <div class="px-5 py-5">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            <LogoDate class="mr-1.5 opacity-70" />
+            <Icon name="mdi:calendar" class="mr-1.5 opacity-70 w-4 h-4" />
             {{ date }}
           </div>
           <div class="flex items-center gap-1.5 flex-wrap">
@@ -59,7 +59,7 @@ withDefaults(defineProps<Props>(), {
         <div
           class="flex items-center gap-1 text-sm font-bold text-violet-600 dark:text-violet-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
           <span>Read More</span>
-          <LogoArrow class="w-4 h-4" />
+          <Icon name="mdi:arrow-right" class="w-4 h-4" />
         </div>
       </div>
     </NuxtLink>

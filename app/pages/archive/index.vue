@@ -1,6 +1,16 @@
 <script lang="ts" setup>
 import Fuse from "fuse.js";
-import { formatDate, getRandomFallbackImage } from "~/utils/helper";
+import { formatDate } from "~/utils/helper";
+
+useHead({
+  title: "Archive",
+  meta: [
+    {
+      name: "description",
+      content: "浏览所有已发布的文章，轻松找到您感兴趣的内容。",
+    },
+  ],
+});
 
 const { data } = await useAsyncData("all-archive-post", () =>
   queryCollection("content").where("published", "=", true).order("date", "DESC").all(),
@@ -15,7 +25,7 @@ const posts = computed(() => {
         path: articles.path,
         title: articles.title || "no-title available",
         description: articles.description || "no-description available",
-        image: articles.image || getRandomFallbackImage(),
+        image: articles.image || "/404/dog.svg",
         alt: articles.alt || "no alter data available",
         date: formatDate(articles.date) || "not-date-available",
         tags: articles.tags || [],
@@ -45,8 +55,34 @@ const searchResults = computed(() => {
 
 <template>
   <main class="container max-w-5xl mx-auto text-zinc-600">
-    <h1 class="text-3xl font-bold my-6">Archive</h1>
+    <!-- Hero 部分 -->
+    <div class="w-full py-12 mb-6">
+      <div class="container max-w-5xl mx-auto px-6">
+        <div class="flex flex-col items-center">
+          <NuxtLink
+            to="/"
+            class="flex items-center gap-2 text-sm font-bold text-violet-600 dark:text-violet-400 hover:underline mb-4">
+            <Icon name="heroicons:arrow-left-20-solid" />
+            返回首页
+          </NuxtLink>
+          <div class="p-3 bg-violet-500/10 rounded-2xl mb-4">
+            <Icon
+              name="mdi:file-document-multiple"
+              size="2.5em"
+              class="text-violet-600 dark:text-violet-400" />
+          </div>
+          <h1
+            class="text-4xl md:text-5xl font-bold text-zinc-800 dark:text-zinc-100 mb-4 tracking-tight">
+            归档
+          </h1>
+          <p class="text-zinc-600 dark:text-zinc-400 text-center max-w-2xl">
+            浏览所有已发布的文章，轻松找到您感兴趣的内容。
+          </p>
+        </div>
+      </div>
+    </div>
 
+    <!-- 搜索框 -->
     <div class="px-6 mb-6">
       <input
         v-model="searchTest"
@@ -55,6 +91,7 @@ const searchResults = computed(() => {
         class="block w-full bg-[#F1F2F4] dark:bg-slate-900 dark:placeholder-zinc-500 text-zinc-300 rounded-md border-gray-300 dark:border-gray-800 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
     </div>
 
+    <!-- 文章列表 -->
     <div v-auto-animate class="space-y-5 my-5 px-4">
       <template v-for="post in searchResults" :key="post.title">
         <ArchiveCard

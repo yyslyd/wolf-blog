@@ -22,7 +22,7 @@
 
 ## 📂 项目结构
 
-```
+```plaintext
 .
 ├── app/                          # 应用根目录
 │   ├── assets/                   # 静态资源
@@ -30,18 +30,16 @@
 │   │   └── images/               # 图片资源
 │   ├── components/               # Vue 组件
 │   │   ├── archive/              # 归档相关组件
-│   │   ├── blog/                 # 博客相关组件
+│   │   ├── posts/                 # 博客相关组件
 │   │   ├── category/             # 分类相关组件
 │   │   ├── content/              # 内容组件
-│   │   ├── footer/               # 页脚组件
-│   │   ├── logo/                 # Logo 组件
 │   │   └── main/                 # 主要组件
 │   ├── config/                   # 配置文件
 │   ├── data/                     # 数据文件
 │   ├── layouts/                  # 布局组件
 │   ├── pages/                    # 页面路由
 │   │   ├── archive/              # 归档页面
-│   │   ├── blogs/                # 博客列表页面
+│   │   ├── posts/                # 博客列表页面
 │   │   ├── categories/           # 分类页面
 │   │   ├── tags/                 # 标签页面
 │   │   └── about.vue             # 关于页面
@@ -53,7 +51,7 @@
 │   └── router.options.ts         # 路由配置
 ├── content/                      # 文章内容
 │   ├── about.md                  # 关于页内容
-│   └── blogs/                    # 博客文章目录
+│   └── posts/                    # 博客文章目录
 ├── public/                       # 公共资源
 ├── server/                       # 服务端代码
 │   └── api/                      # API 路由
@@ -163,19 +161,6 @@ const siteConfig = {
 }
 ```
 
-### 主题配置
-
-修改 `tailwind.config.js` 自定义主题色：
-
-```javascript
-theme: {
-  colors: {
-    primary: '#bd83f3', // 主题色
-    // ...
-  }
-}
-```
-
 ### 评论系统
 
 在 `app/config/index.ts` 配置 Twikoo：
@@ -211,7 +196,7 @@ published: true
 ### Front Matter 字段说明
 
 | 字段 | 类型 | 说明 |
-|------|------|------|
+| ------ | ------ | ------ |
 | `title` | string | 文章标题 |
 | `description` | string | 文章描述 |
 | `date` | string | 发布日期 (YYYY-MM-DD) |
@@ -238,14 +223,10 @@ published: true
 项目内置完整的 SEO 优化：
 
 - ✅ Meta 标签（title, description, keywords）
-- ✅ Open Graph 标签（社交分享）
-- ✅ Twitter Card 标签
 - ✅ hreflang 标签（多语言）
 - ✅ Canonical 标签
-- ✅ Schema.org 结构化数据
 - ✅ Sitemap 自动生成
 - ✅ RSS 订阅源
-- ✅ 动态 OG 图片
 
 ## 🔧 常用命令
 
@@ -276,11 +257,11 @@ bun run format:fix   # 格式化代码
 
 ## 📄 许可证
 
-MIT License - 详见 [LICENSE.md](LICENSE.md)
+MIT License - 详见 [LICENSE](LICENSE)
 
 ## 👤 作者
 
-**RhenCloud**
+## RhenCloud
 
 - GitHub: [@RhenCloud](https://github.com/RhenCloud)
 - Email: <i@rhen.cloud>
@@ -309,59 +290,3 @@ MIT License - 详见 [LICENSE.md](LICENSE.md)
 - ✅ Sitemap 和 RSS 支持
 
 ---
-
-**Made with ❤️ by RhenCloud**
-
-- Blog list page with search and pagination
-- About me page for user info
-- Auto generate table of content for blog post
-- Auto generate Sitemap
-- Url preview with Nuxt ogImage
-- Dark and light mode
-- Server Side Rendered(SSR) with Nuxt4
-- RSS feed
-
-## How to Make This Blog Template Yours in 5 Minutes
-
-- Clone this repo or use it as a template
-- Go to `./app/data/index.ts` file & add your personal info
-- Then head over to the `./content/blogs` folder to add new blogs
-- Voilà! You've got a personalized blog site!
-
-## Preview
-
-<p align="center">
-  <a href="https://blog.nurriyad.com" target="_blank">
-    <img width="1090" src="./app/assets/images/preview1.png">
-    <img width="1090" src="./app/assets/images/preview2.png">
-    <img width="1090" src="./app/assets/images/preview3.png">
-    <img width="1090" src="./app/assets/images/preview4.png">
-    <br>
-    Live Demo
-  </a>
-</p>
-
-## Demo
-
-<https://blog.nurriyad.com>
-
-> Hosted on [Vercel](https://vercel.com/): `npm run build`
-
-## Build Setup
-
-**Requires Node.js 20.19+**
-
-```bash
-# install dependencies
-yarn install
-
-# serve in dev mode, with hot reload at localhost:5173
-yarn run dev
-
-# build for production
-yarn run build
-
-# serve in production mode
-yarn run preview
-
-```

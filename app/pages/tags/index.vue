@@ -24,7 +24,7 @@ useHead({
   meta: [
     {
       name: "description",
-      content: "浏览所有标签，浏览我写过的文章的标签。",
+      content: "浏览所有我写过的文章的标签。",
     },
   ],
 });
@@ -38,10 +38,10 @@ useHead({
       </div>
       <h1
         class="text-4xl md:text-5xl font-bold text-zinc-800 dark:text-zinc-100 mb-4 tracking-tight">
-        All Tags
+        标签
       </h1>
       <p class="text-zinc-600 dark:text-zinc-400 text-center max-w-md">
-        Browse through all the topics and technologies I've written about.
+        浏览所有我写过的文章的标签。
       </p>
     </div>
 

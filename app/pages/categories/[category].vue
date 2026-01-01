@@ -49,9 +49,26 @@ useHead({
 </script>
 
 <template>
-  <main class="container max-w-5xl mx-auto text-zinc-600 px-4">
-    <CategoryTopic />
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+  <main class="container max-w-5xl mx-auto text-zinc-600 px-4 py-12">
+    <div class="flex flex-col items-center mb-12">
+      <NuxtLink
+        to="/categories"
+        class="flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:underline mb-4">
+        <Icon name="heroicons:arrow-left-20-solid" />
+        返回分类
+      </NuxtLink>
+      <div class="p-3 bg-blue-500/10 rounded-2xl mb-4">
+        <Icon name="mdi:folder-multiple" size="2.5em" class="text-blue-600 dark:text-blue-400" />
+      </div>
+      <h1
+        class="text-4xl md:text-5xl font-bold text-zinc-800 dark:text-zinc-100 mb-4 tracking-tight">
+        {{ category }}
+      </h1>
+      <p class="text-zinc-600 dark:text-zinc-400 text-center">
+        找到 {{ formattedData.length || 0 }} 篇分类下的文章
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <BlogCard
         v-for="post in formattedData"
         :key="post.title"

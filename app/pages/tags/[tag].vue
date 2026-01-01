@@ -57,7 +57,7 @@ useHead({
         to="/tags"
         class="flex items-center gap-2 text-sm font-bold text-primary hover:underline mb-4">
         <Icon name="heroicons:arrow-left-20-solid" />
-        Back to all tags
+        返回标签
       </NuxtLink>
       <div class="p-3 bg-primary-10 rounded-2xl mb-4">
         <Icon name="fa-solid:tag" size="2.5em" class="text-primary" />
@@ -67,7 +67,7 @@ useHead({
         #{{ tag }}
       </h1>
       <p class="text-zinc-600 dark:text-zinc-400 text-center">
-        Found {{ formattedData.length || 0 }} posts with this tag
+        找到 {{ formattedData.length || 0 }} 篇关于此标签的文章
       </p>
     </div>
 

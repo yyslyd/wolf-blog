@@ -11,9 +11,15 @@ useHead({
 </script>
 
 <template>
-  <div class="py-5">
-    <div class="container max-w-xl mx-auto">
-      <Logo404 />
+  <div class="py-20">
+    <div class="container max-w-xl mx-auto text-center">
+      <h1 class="text-6xl font-bold text-zinc-900 dark:text-white mb-4">404</h1>
+      <p class="text-xl text-zinc-600 dark:text-zinc-400 mb-8">页面未找到</p>
+      <NuxtLink
+        to="/"
+        class="inline-block bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors">
+        返回首页
+      </NuxtLink>
     </div>
   </div>
 </template>

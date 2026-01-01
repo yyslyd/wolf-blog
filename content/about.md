@@ -19,26 +19,26 @@
 
 ### 编程语言
 
-- `simple-icons:javascript` **JavaScript** / `simple-icons:typescript` **TypeScript**
-- `simple-icons:python` **Python**
-- `simple-icons:vuedotjs` **Vue.js**
-- `simple-icons:html5` **HTML**
-- `simple-icons:css3` **CSS**
+- **JavaScript** / **TypeScript** - 前端开发主力语言
+- **Python** - 数据处理和脚本编程
+- **Vue.js** - 前端框架
+- **HTML** / **CSS** - Web 基础
 
 ### 开发框架
 
-- `simple-icons:nuxt` **Nuxt.js** - 现代 Vue.js 框架
-- `simple-icons:flask` **Flask** - Python Web 框架
+- **Nuxt.js** - 现代 Vue.js 框架
+- **Flask** - Python Web 框架
 
 ### 工具与平台
 
-- `simple-icons:git` **Git** / `simple-icons:github` **GitHub**
-- `simple-icons:docker` **Docker**
-- `simple-icons:githubcopilot` **GitHub Copilot**
-- `simple-icons:githubactions` **Github Actions**
-- `simple-icons:vercel` **Vercel**
-- `simple-icons:netlify` **Netlify**
-- `simple-icons:cloudflare` **Cloudflare**
+- **Git** / **GitHub** - 版本控制与代码托管
+- **Docker** - 容器化
+- **GitHub Copilot** - AI 编程助手
+- **Github Actions** - CI/CD 自动化
+- **Vercel** - 部署平台
+- **Netlify** - 部署平台
+- **Tencent EdgeOne** - 部署平台
+- **Cloudflare** - CDN 和域名托管
 
 ## 关于本站
 

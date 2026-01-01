@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 const { data } = await useAsyncData("all-blog-post-by-tags", () =>
-  queryCollection("content").all(),
+  queryCollection("content").select("path", "tags").where("published", "=", true).all(),
 );
 
 const allTags = new Map();
 
 data.value?.forEach((blog) => {
-  const tags: Array<string> = (blog.meta.tags as string[]) || [];
+  const tags: Array<string> = (blog.tags as string[]) || [];
   tags.forEach((tag) => {
     if (allTags.has(tag)) {
       const cnt = allTags.get(tag);

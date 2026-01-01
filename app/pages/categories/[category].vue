@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BlogPost } from "@/types/blog";
+// import type { BlogPost } from "@/types/blog";
 const route = useRoute();
 
 // Take category from route params & ensure it's a valid string
@@ -13,37 +13,27 @@ const category = computed(() => {
 });
 
 const { data } = await useAsyncData(`category-data-${category.value}`, () =>
-  queryCollection("content")
-    .all()
-    .then((articles) =>
-      articles.filter((article) => {
-        const meta = article.meta as unknown as BlogPost;
-        return (
-          meta.published &&
-          meta.categories?.map((cat) => cat.toLowerCase()).includes(category.value)
-        ); // Case-insensitive matching
-      }),
-    ),
+  queryCollection("content").where("published", "=", true).all(),
 );
 
 const formattedData = computed(() => {
   return (
     data.value
-      ?.map((articles) => {
-        const meta = articles.meta as unknown as BlogPost;
+      ?.filter((article) =>
+        article.categories?.map((cat) => cat.toLowerCase()).includes(category.value),
+      )
+      .map((articles) => {
         return {
           path: articles.path,
           title: articles.title || "no-title available",
           description: articles.description || "no-description available",
-          image: meta.image || "/blogs-img/blog.jpg",
-          alt: meta.alt || "no alter data available",
-          ogImage: meta.ogImage || "/blogs-img/blog.jpg",
-          date: meta.date || "not-date-available",
-          tags: meta.tags || [],
-          published: meta.published || false,
+          image: articles.image || "/blogs-img/blog.jpg",
+          alt: articles.alt || "no alter data available",
+          date: articles.date || "not-date-available",
+          tags: articles.tags || [],
+          published: articles.published || false,
         };
-      })
-      .filter((post) => post.published) || [] // Ensure only published posts are shown
+      }) || []
   );
 });
 
@@ -67,11 +57,10 @@ useHead({
         :key="post.title"
         :path="post.path"
         :title="post.title"
-        :date="post.date"
+        :date="formatDate(post.date)"
         :description="post.description"
         :image="post.image"
         :alt="post.alt"
-        :og-image="post.ogImage"
         :tags="post.tags"
         :published="post.published" />
       <BlogEmpty v-if="formattedData.length === 0" />

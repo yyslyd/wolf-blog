@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Fuse from "fuse.js";
-import type { BlogPost } from "~/types/blog";
+// import type { BlogPost } from "~/types/blog";
 
 const { data } = await useAsyncData("all-blog-post", () => queryCollection("content").all());
 
@@ -11,16 +11,15 @@ const searchTest = ref("");
 const formattedData = computed(() => {
   return (
     data.value?.map((articles) => {
-      const meta = articles.meta as unknown as BlogPost;
       return {
         path: articles.path,
         title: articles.title || "no-title available",
         description: articles.description || "no-description available",
-        image: meta.image || "/not-found.jpg",
-        alt: meta.alt || "no alter data available",
-        date: meta.date || "not-date-available",
-        tags: meta.tags || [],
-        published: meta.published || false,
+        image: articles.image || "/not-found.jpg",
+        alt: articles.alt || "no alter data available",
+        date: articles.date || "not-date-available",
+        tags: articles.tags || [],
+        published: articles.published || false,
       };
     }) || []
   );

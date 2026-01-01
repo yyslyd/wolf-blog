@@ -1,24 +1,23 @@
 <script lang="ts" setup>
-import type { BlogPost } from "~/types/blog";
+// import type { BlogPost } from "~/types/blog";
 import { formatDate } from "~/utils/helper";
 
 const { data } = await useAsyncData("all-archive-post", () =>
-  queryCollection("content").order("date", "DESC").all(),
+  queryCollection("content").where("published", "=", true).order("date", "DESC").all(),
 );
 
 // const sortedData = computed(() => {
 const posts = computed(() => {
   return data.value?.map((articles) => {
-    const meta = articles.meta as unknown as BlogPost;
     return {
       path: articles.path,
       title: articles.title || "no-title available",
       description: articles.description || "no-description available",
-      image: meta.image || "/not-found.jpg",
-      alt: meta.alt || "no alter data available",
+      image: articles.image || "/not-found.jpg",
+      alt: articles.alt || "no alter data available",
       date: formatDate(articles.date) || "not-date-available",
-      tags: meta.tags || [],
-      published: meta.published || false,
+      tags: articles.tags || [],
+      published: articles.published || false,
     };
   });
 });

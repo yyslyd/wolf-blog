@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { BlogPost } from "~/types/blog";
-
 // Function to parse dates in the format "1st Mar 2023"
 function parseCustomDate(dateStr: string): Date {
   // Remove ordinal indicators (st, nd, rd, th)
@@ -16,8 +14,8 @@ const { data } = await useAsyncData("recent-post", () =>
     .then((data) => {
       return data
         .sort((a, b) => {
-          const aDate = parseCustomDate(a.meta.date as string);
-          const bDate = parseCustomDate(b.meta.date as string);
+          const aDate = parseCustomDate(a.date as string);
+          const bDate = parseCustomDate(b.date as string);
           return bDate.getTime() - aDate.getTime();
         })
         .slice(0, 3);
@@ -26,16 +24,15 @@ const { data } = await useAsyncData("recent-post", () =>
 
 const formattedData = computed(() => {
   return data.value?.map((articles) => {
-    const meta = articles.meta as unknown as BlogPost;
     return {
       path: articles.path,
       title: articles.title || "no-title available",
       description: articles.description || "no-description available",
-      image: meta.image || "/not-found.jpg",
-      alt: meta.alt || "no alter data available",
-      date: meta.date || "not-date-available",
-      tags: meta.tags || [],
-      published: meta.published || false,
+      image: articles.image || "/not-found.jpg",
+      alt: articles.alt || "no alter data available",
+      date: articles.date || "not-date-available",
+      tags: articles.tags || [],
+      published: articles.published || false,
     };
   });
 });

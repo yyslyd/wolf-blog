@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { BlogPost } from "@/types/blog";
 const route = useRoute();
 
 const tag = computed(() => {
@@ -16,26 +15,28 @@ const { data } = await useAsyncData(`tag-data-${tag.value}`, () =>
     .all()
     .then((articles) =>
       articles.filter((article) => {
-        const meta = article.meta as unknown as BlogPost;
-        return meta.published && meta.tags.some((t) => t.toLowerCase() === tag.value.toLowerCase());
+        return (
+          article.published && article.tags.some((t) => t.toLowerCase() === tag.value.toLowerCase())
+        );
       }),
     ),
 );
 
 const formattedData = computed(() => {
-  return data.value?.map((articles) => {
-    const meta = articles.meta as unknown as BlogPost;
-    return {
-      path: articles.path,
-      title: articles.title || "no-title available",
-      description: articles.description || "no-description available",
-      image: meta.image || "/blogs-img/blog.jpg",
-      alt: meta.alt || "no alter data available",
-      date: formatDate(articles.date) || "not-date-available",
-      tags: meta.tags || [],
-      published: meta.published || false,
-    };
-  });
+  return (
+    data.value?.map((articles) => {
+      return {
+        path: articles.path,
+        title: articles.title || "no-title available",
+        description: articles.description || "no-description available",
+        image: articles.image || "/blogs-img/blog.jpg",
+        alt: articles.alt || "no alter data available",
+        date: formatDate(articles.date) || "not-date-available",
+        tags: articles.tags || [],
+        published: articles.published || false,
+      };
+    }) || []
+  );
 });
 
 useHead({

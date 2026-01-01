@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 const { data } = await useAsyncData("all-blog-post-by-category", () =>
-  queryCollection("content").all(),
+  queryCollection("content").select("path", "categories").where("published", "=", true).all(),
 );
 
 const allTags = new Map();
 
 data.value?.forEach((blog) => {
-  const categories: Array<string> = (blog.meta.categories as string[]) || [];
+  const categories: Array<string> = (blog.categories as string[]) || [];
   categories.forEach((category) => {
     if (allTags.has(category)) {
       const cnt = allTags.get(category);

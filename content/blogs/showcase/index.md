@@ -1,6 +1,6 @@
 ---
 title: "示例展示：展示本博客所有功能"
-published: true
+published: false
 date: 2025-12-31
 updatedDate: 2025-12-31
 description: "一篇演示文档，展示站点可用的组件、标记和布局用法，方便检视和测试。"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BlogPost } from "@/types/blog";
+import Comment from "~/components/blog/Comment.vue";
 import { seoData } from "~/data";
 import { formatDate } from "~/utils/helper";
 
@@ -12,17 +13,15 @@ const { data: articles, error } = await useAsyncData(`blog-post-${path}`, () =>
 if (error.value) navigateTo("/404");
 
 const data = computed<BlogPost>(() => {
-  const meta = articles?.value?.meta as unknown as BlogPost;
   return {
     title: articles.value?.title || "no-title available",
     description: articles.value?.description || "no-description available",
-    image: meta?.image || "/not-found.jpg",
-    alt: meta?.alt || "no alter data available",
-    date: meta?.date || "not-date-available",
-    tags: meta?.tags || [],
-    published: meta?.published || false,
-    categories: meta?.categories || [],
-    meta: meta || {},
+    image: articles.value?.image || "/not-found.jpg",
+    alt: articles.value?.alt || "no alter data available",
+    date: articles.value?.date || "not-date-available",
+    tags: articles.value?.tags || [],
+    published: articles.value?.published || false,
+    categories: articles.value?.categories || [],
     path: path || "",
   };
 });
@@ -54,7 +53,7 @@ useHead({
         :title="data.title"
         :image="data.image"
         :alt="data.alt"
-        :date="formatDate(articles.date)"
+        :date="formatDate(data.date)"
         :description="data.description"
         :tags="data.tags" />
       <div
@@ -64,6 +63,9 @@ useHead({
             <p>No content found.</p>
           </template>
         </ContentRenderer>
+        <ClientOnly>
+          <Comment />
+        </ClientOnly>
       </div>
     </div>
 

@@ -22,7 +22,6 @@
     "node": "24.12.0"
   },
   "dependencies": {
-    "@chinese-fonts/maple-mono-cn": "^2.0.0",
     "@formkit/auto-animate": "0.9.0",
     "@nuxt/content": "3.8.2",
     "@nuxt/fonts": "0.12.1",
@@ -31,10 +30,12 @@
     "@nuxt/ui": "^4.3.0",
     "@nuxtjs/color-mode": "4.0.0",
     "@nuxtjs/robots": "5.6.7",
+    "@nuxtjs/seo": "^3.3.0",
     "@nuxtjs/sitemap": "7.5.0",
     "feed": "5.1.0",
     "nuxt": "4.2.2",
     "nuxt-og-image": "5.1.13",
+    "twikoo": "^1.6.44",
     "vue": "3.5.26"
   },
   "devDependencies": {

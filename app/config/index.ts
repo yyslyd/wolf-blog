@@ -24,7 +24,7 @@ const siteConfig = {
     { name: "Email", url: "mailto:i@rhen.cloud" },
     { name: "Telegram", url: "https://t.me/RhenCloud" },
     { name: "Bilibili", url: "https://space.bilibili.com/1502883335" },
-    { name: "Blog", url: "https://blog.rhen.cloud" },
+    { name: "X", url: "https://x.com/RhenCloud75" },
   ],
 
   navbar: {
@@ -50,6 +50,13 @@ const siteConfig = {
     hitokoto: {
       enable: true,
       type: "a&b&c&d&j",
+    },
+  },
+
+  comment: {
+    twikoo: {
+      enable: true,
+      envId: "https://twikoo.rhen.cloud",
     },
   },
 

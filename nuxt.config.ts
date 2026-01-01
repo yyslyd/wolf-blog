@@ -6,23 +6,19 @@ export default defineNuxtConfig({
   srcDir: "app",
   css: ["./app/assets/css/main.css"],
 
-  components: {
-    dirs: [
-      {
-        path: "~/components",
-        extensions: ["vue"],
-      },
-      {
-        path: "~/components/content",
-        extensions: ["vue"],
-        prefix: "Prose",
-      },
-    ],
-  },
-
-  future: {
-    compatibilityVersion: 4,
-  },
+  // components: {
+  //   dirs: [
+  //     {
+  //       path: "~/components",
+  //       extensions: ["vue"],
+  //     },
+  //     {
+  //       path: "~/components/content",
+  //       extensions: ["vue"],
+  //       prefix: "Prose",
+  //     },
+  //   ],
+  // },
 
   modules: [
     "@nuxt/icon",
@@ -31,8 +27,8 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@vueuse/nuxt",
     "@nuxtjs/robots",
+    "@nuxtjs/seo",
     "@nuxtjs/sitemap",
-    "nuxt-og-image",
     "@nuxt/content",
     "@nuxtjs/color-mode",
     // "@nuxtjs/tailwindcss",
@@ -47,22 +43,36 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      charset: "utf-16",
-      viewport: "width=device-width,initial-scale=1",
+      charset: "utf-8",
+      viewport: "width=device-width,initial-scale=1,maximum-scale=5",
       title: siteConfig.siteMeta.title,
       titleTemplate: `%s - ${siteConfig.siteMeta.title}`,
+      meta: [
+        { name: "author", content: siteConfig.siteMeta.author },
+        { name: "language", content: "zh-CN" },
+        { name: "theme-color", content: siteConfig.theme.color },
+      ],
+      link: [
+        { rel: "canonical", href: siteConfig.siteMeta.url },
+        { rel: "alternate", hreflang: "zh-CN", href: siteConfig.siteMeta.url },
+        { rel: "dns-prefetch", href: siteConfig.siteMeta.url },
+        { rel: "preconnect", href: siteConfig.siteMeta.url },
+      ],
     },
     pageTransition: { name: "page", mode: "out-in" },
     layoutTransition: { name: "layout", mode: "out-in" },
   },
 
   sitemap: {
-    sources: [siteConfig.siteMeta.url],
+    sources: ["/api/__sitemap__/urls"],
   },
+  robots: { groups: [{ userAgent: ["GPTBot", "ChatGPT-User"], disallow: ["/"] }] },
 
   site: {
     url: siteConfig.siteMeta.url,
     name: siteConfig.siteMeta.title,
+    description: siteConfig.siteMeta.description,
+    author: siteConfig.siteMeta.author,
   },
 
   typescript: {

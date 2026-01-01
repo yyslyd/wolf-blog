@@ -1,6 +1,9 @@
 import siteConfig from "./app/config";
 import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// const sitemapApiUrl = `${siteConfig.siteMeta.url}/api/__sitemap__/urls`;
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-12-20",
   srcDir: "app",
@@ -66,7 +69,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
-    excludeAppSources: true,
+    // 移除 excludeAppSources，允许自动发现页面
     autoLastmod: true,
   },
 
@@ -83,7 +86,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/sitemap.xml"],
+      routes: ["/", "/sitemap.xml", "/rss.xml"],
       ignore: ["/404"],
     },
     minify: true,

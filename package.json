@@ -8,9 +8,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "NODE_OPTIONS=--max-old-space-size=4096 nuxt build",
+    "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "NODE_OPTIONS=--max-old-space-size=4096 nuxt generate",
+    "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",

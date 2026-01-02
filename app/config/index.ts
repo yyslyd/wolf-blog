@@ -45,6 +45,12 @@ const siteConfig = {
     ],
   },
 
+  lines: [
+    { name: "EdgeOne", url: "https://blog.rhen.cloud", ping: true },
+    { name: "Vercel", url: "https://blog.rhencloud.dev", ping: true },
+    { name: "Dev", url: "http://localhost:3000", ping: false },
+  ],
+
   theme: {
     background: "/background.webp",
     backgroundMobile: "https://www.loliapi.com/acg/pe",

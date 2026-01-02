@@ -17,8 +17,8 @@ const route = useRoute();
       class="absolute inset-0 pointer-events-none -z-10 transition-all duration-700 ease-in-out"
       :style="route.path === '/' ? { clipPath: 'inset(100vh 0 0 0)' } : {}">
       <div
-        class="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/80 dark:from-slate-900/80 dark:via-slate-900/70 dark:to-slate-900/90 backdrop-blur-xl"></div>
-      <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] mix-blend-overlay"></div>
+        class="absolute inset-0 bg-linear-to-b from-white/40 via-white/40 to-white/70 dark:from-slate-900/40 dark:via-slate-900/40 dark:to-slate-900/70 backdrop-blur-xs"></div>
+      <!-- <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] mix-blend-overlay"></div> -->
     </div>
   </div>
 </template>

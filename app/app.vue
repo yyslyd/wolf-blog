@@ -11,6 +11,25 @@ useHead({
 
 const desktopBg = siteConfig.theme.background || "";
 const mobileBg = siteConfig.theme.backgroundMobile || "";
+
+// 将 siteConfig.theme.color 转换为 CSS 变量
+const hexToRgb = (hex: string) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? `${parseInt(result[1]!, 16)}, ${parseInt(result[2]!, 16)}, ${parseInt(result[3]!, 16)}`
+    : "189, 131, 243";
+};
+
+const primaryColor = siteConfig.theme.color || "#bd83f3";
+const primaryRgb = hexToRgb(primaryColor);
+
+useHead({
+  style: [
+    {
+      innerHTML: `:root { --site-primary: ${primaryColor}; --site-primary-rgb: ${primaryRgb}; }`,
+    },
+  ],
+});
 </script>
 
 <template>

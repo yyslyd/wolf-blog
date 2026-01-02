@@ -3,7 +3,7 @@ const route = useRoute();
 </script>
 
 <template>
-  <div class="gd-container font-spacegrotesk relative">
+  <div class="gd-container font-spacegrotesk relative overflow-x-hidden">
     <MainHeader />
     <main>
       <slot />

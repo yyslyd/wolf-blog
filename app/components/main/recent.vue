@@ -53,7 +53,7 @@ const formattedData = computed(() => {
         </h2>
       </div>
       <NuxtLink
-        to="/blogs"
+        to="/archive"
         class="group flex items-center gap-1 text-sm font-semibold text-zinc-900 dark:text-zinc-50 hover-text-primary transition-colors">
         查看全部文章
         <Icon

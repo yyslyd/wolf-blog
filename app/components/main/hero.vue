@@ -1,6 +1,32 @@
 <script setup lang="ts">
 import siteConfig from "~/config";
 import SocialLinks from "./SocialLinks.vue";
+import Typed from "typed.js";
+
+const descriptions = siteConfig.hero.description;
+const typedElement = ref<HTMLElement | null>(null);
+const randomDescription = ref(descriptions[0]);
+let typed: Typed | null = null;
+
+onMounted(() => {
+  if (siteConfig.hero.typed?.enable && typedElement.value) {
+    typed = new Typed(typedElement.value, {
+      strings: descriptions,
+      typeSpeed: siteConfig.hero.typed.typeSpeed || 100,
+      backSpeed: siteConfig.hero.typed.backSpeed || 50,
+      loop: siteConfig.hero.typed.loop ?? true,
+      backDelay: siteConfig.hero.typed.backDelay || 2000,
+    });
+  } else {
+    randomDescription.value = descriptions[Math.floor(Math.random() * descriptions.length)];
+  }
+});
+
+onUnmounted(() => {
+  if (typed) {
+    typed.destroy();
+  }
+});
 </script>
 
 <template>
@@ -9,7 +35,7 @@ import SocialLinks from "./SocialLinks.vue";
       class="container max-w-5xl mx-auto px-6 min-h-[calc(100vh-4rem)] flex items-center justify-center">
       <div class="relative z-10 flex flex-col items-center text-center">
         <div class="mb-8">
-          <div class="relative h-32 w-32 group">
+          <div class="relative h-40 w-40 group">
             <div
               class="absolute inset-0 bg-primary-gradient rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
             <NuxtImg
@@ -32,8 +58,9 @@ import SocialLinks from "./SocialLinks.vue";
           </div>
 
           <p
-            class="mt-4 max-w-2xl text-base sm:text-lg text-zinc-600 dark:text-zinc-300 relative font-medium leading-relaxed">
-            {{ siteConfig.hero.description }}
+            class="mt-4 max-w-2xl text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 relative font-medium leading-relaxed min-h-[1.5em]">
+            <span v-if="siteConfig.hero.typed?.enable" ref="typedElement"></span>
+            <span v-else>{{ randomDescription }}</span>
           </p>
         </div>
 

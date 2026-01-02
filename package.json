@@ -36,6 +36,7 @@
     "nuxt": "4.2.2",
     "nuxt-og-image": "5.1.13",
     "twikoo": "^1.6.44",
+    "typed.js": "^2.1.0",
     "vue": "3.5.26"
   },
   "devDependencies": {

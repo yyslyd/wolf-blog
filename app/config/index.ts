@@ -12,7 +12,14 @@ const siteConfig = {
 
   hero: {
     title: "RhenCloud's Blog",
-    description: "Your Solution Answer Exists And Only.",
+    description: ["Your Solution Answer Exists And Only.", "趁世界还未重启之前 约一次爱恋"],
+    typed: {
+      enable: true,
+      typeSpeed: 100,
+      backSpeed: 50,
+      loop: true,
+      backDelay: 2000,
+    },
   },
 
   profile: {

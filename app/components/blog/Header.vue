@@ -40,7 +40,7 @@ withDefaults(defineProps<Props>(), {
       </div>
 
       <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-800 dark:text-zinc-100 mb-6 tracking-tight leading-tight">
+        class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-800 dark:text-zinc-100 mb-6 tracking-tight leading-tight break-words">
         {{ title }}
       </h1>
 
@@ -49,7 +49,7 @@ withDefaults(defineProps<Props>(), {
       </p>
     </div>
 
-    <div class="relative group max-w-4xl mx-auto mb-12">
+    <div class="relative group max-w-4xl mx-auto mb-12 w-full">
       <div
         class="absolute inset-0 bg-linear-to-tr from-violet-500/20 to-fuchsia-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       <NuxtImg

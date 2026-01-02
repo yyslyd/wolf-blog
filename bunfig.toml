@@ -5,5 +5,5 @@ minify = true
 root = "."
 entrypoints = ["./app/app.vue"]
 
-[env]
-NODE_OPTIONS = "--max-old-space-size=4096"
+# [env]
+# NODE_OPTIONS = "--max-old-space-size=4096"

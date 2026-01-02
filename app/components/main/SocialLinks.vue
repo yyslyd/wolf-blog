@@ -2,24 +2,15 @@
   <section class="flex flex-col gap-2.5">
     <div class="flex flex-wrap gap-2.5">
       <template v-for="link in links" :key="link.url">
-        <NuxtLink
-          :to="link.url"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 backdrop-blur-md border border-white/40 text-zinc-700 text-sm font-semibold transition-all duration-300 hover:bg-white/60 hover:border-white/60 hover-text-black hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800/40 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-slate-800/60 dark:hover:text-white">
-          <span v-if="iconFor(link)" class="inline-flex items-center justify-center w-5 h-5">
-            <Icon
-              v-if="iconFor(link).name"
-              :name="iconFor(link).name"
-              size="16"
-              class="text-current" />
-            <NuxtImg
-              v-else
-              :src="iconFor(link).src"
-              :alt="link.name"
-              loading="lazy"
-              class="w-full h-full" />
-          </span>
-          <span>{{ link.name }}</span>
-        </NuxtLink>
+        <UTooltip :text="link.name">
+          <NuxtLink
+            :to="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/40 backdrop-blur-md border border-white/40 text-zinc-700 transition-all duration-300 hover:bg-white/60 hover:border-white/60 hover:text-black hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800/40 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-slate-800/60 dark:hover:text-white">
+            <Icon v-if="iconFor(link)" :name="iconFor(link)" size="22" class="text-current" />
+          </NuxtLink>
+        </UTooltip>
       </template>
     </div>
   </section>
@@ -28,7 +19,6 @@
 <script setup>
 import siteConfig from "~/config";
 
-import { onMounted } from "vue";
 const links = siteConfig.socialLinks;
 
 const iconMap = {
@@ -55,20 +45,8 @@ const iconMap = {
 
 const iconFor = (link) => {
   const key = (link.name || "").toLowerCase();
-  if (iconMap[key]) return { name: iconMap[key] };
-  if (link.icon) return { src: link.icon };
+  if (iconMap[key]) return iconMap[key];
+  if (link.icon) return link.icon;
   return null;
 };
-onMounted(() => {
-  const id = "fa-cdn";
-  if (document.getElementById(id)) return;
-  const link = document.createElement("link");
-  link.id = id;
-  link.rel = "stylesheet";
-  link.href =
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css?font-display=swap";
-  link.crossOrigin = "anonymous";
-  link.referrerPolicy = "no-referrer";
-  document.head.appendChild(link);
-});
 </script>

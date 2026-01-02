@@ -76,7 +76,7 @@ const siteConfig = {
   },
 
   umami: {
-    enable: true,
+    enable: false,
     scriptUrl: "https://cloud.umami.is/script.js",
     apiKey: "api_MGcpRPYMcBmTKZOKdUVpr7mlBoWkck5g",
     websiteId: "b33dfd14-7e62-498b-a199-de0ac38a1d44",

@@ -72,7 +72,7 @@
 
 ## 致谢
 
-感谢以下项目和社区的支持：
+感谢以下项目和社区的支持（排名不分先后）：
 
 - [Nuxt.js](https://nuxt.com) - Vue 框架
 - [Vue.js](https://vuejs.org) - 前端框架
@@ -83,6 +83,8 @@
 - [Twikoo](https://twikoo.js.org) - 评论系统
 - [Alpine-Starter](https://github.com/nuxt-themes/alpine-starter) - 主题模板
 - [Clarity](https://github.com/L33Z22L11/blog-v3) - 博客部分灵感来源
+- [Fuwari](https://github.com/saicaca/fuwari) - 博客部分灵感来源
+- [Mizuki](https://github.com/matsuzaka-yuki/Mizuki) - 博客部分灵感来源
 - 开源社区的所有贡献者
 - ...
 

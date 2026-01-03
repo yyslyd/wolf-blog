@@ -33,3 +33,20 @@ jobs:
 
       - name: Playgroud build check
         run: bun run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output-${{ github.sha }}
+          path: .output
+          retention-days: 7
+
+      - name: Playgroud generate check
+        run: bun run generate
+
+      - name: Upload generate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: generate-output-${{ github.sha }}
+          path: dist
+          retention-days: 7

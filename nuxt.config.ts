@@ -49,7 +49,8 @@ export default defineNuxtConfig({
       meta: [
         { name: "author", content: siteConfig.siteMeta.author },
         { name: "language", content: "zh-CN" },
-        { name: "theme-color", content: siteConfig.theme.color },
+        { name: "theme-color", content: siteConfig.theme?.color },
+        { name: "description", content: siteConfig.siteMeta.description },
       ],
       link: [
         { rel: "icon", href: siteConfig.siteMeta.favicon, type: "image/svg+xml" },

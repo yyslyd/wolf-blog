@@ -52,8 +52,8 @@
     <p>
       © {{ new Date(siteConfig.siteMeta.startTime).getFullYear() }}-{{ new Date().getFullYear() }}
       {{ siteConfig.siteMeta.author }} |
-      <NuxtLink to="/rss.xml" class="text-primary">RSS</NuxtLink> |
-      <NuxtLink to="/sitemap.xml" class="text-primary">Sitemap</NuxtLink>.
+      <NuxtLink to="/rss.xml" class="text-primary" external>RSS</NuxtLink> |
+      <NuxtLink to="/sitemap.xml" class="text-primary" external>Sitemap</NuxtLink>.
     </p>
 
     <!-- eslint-disable-next-line vue/no-v-html -->

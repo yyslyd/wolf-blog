@@ -12,6 +12,12 @@ useHead({
     { name: "description", content: siteConfig.siteMeta.description },
     { name: "author", content: siteConfig.siteMeta.author },
   ],
+  link: [
+    {
+      rel: "canonical",
+      href: `${siteConfig.siteMeta.url}/${path}`,
+    },
+  ],
 });
 </script>
 

@@ -68,8 +68,26 @@ export default defineNuxtConfig({
   robots: { groups: [{ userAgent: ["GPTBot", "ChatGPT-User"], disallow: ["/"] }] },
 
   sitemap: {
-    sources: ["/api/__sitemap__/urls"],
+    sitemapsPathPrefix: "/",
     autoLastmod: true,
+    sitemaps: {
+      posts: {
+        sources: ["/api/__sitemap__/urls"],
+        include: ["/posts/**"],
+      },
+      tags: {
+        sources: ["/api/__sitemap__/urls"],
+        include: ["/tags/**"],
+      },
+      categories: {
+        sources: ["/api/__sitemap__/urls"],
+        include: ["/categories/**"],
+      },
+      pages: {
+        sources: ["/api/__sitemap__/urls"],
+        include: ["/", "/about", "/archive", "/tags", "/categories"],
+      },
+    },
   },
 
   typescript: {

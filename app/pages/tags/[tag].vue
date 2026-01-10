@@ -29,7 +29,7 @@ const formattedData = computed(() => {
         path: articles.path,
         title: articles.title || "no-title available",
         description: articles.description || "no-description available",
-        image: articles.image || getRandomFallbackImage(),
+        image: articles.image || getRandomFallbackImage(articles.path),
         alt: articles.alt || "no alter data available",
         date: formatDate(articles.date) || "not-date-available",
         tags: articles.tags || [],

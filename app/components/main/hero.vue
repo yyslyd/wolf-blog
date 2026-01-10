@@ -3,9 +3,21 @@ import siteConfig from "~/config";
 import SocialLinks from "./SocialLinks.vue";
 import Typed from "typed.js";
 
-const descriptions = siteConfig.hero.description;
+// Normalize `siteConfig.hero.description` to a string[] to satisfy TypeScript
+const rawDescription = siteConfig.hero?.description;
+let descriptions: string[] = [];
+if (Array.isArray(rawDescription)) {
+  descriptions = rawDescription.filter((d) => typeof d === "string" && d.length > 0) as string[];
+} else if (typeof rawDescription === "string" && rawDescription.length > 0) {
+  descriptions = [rawDescription];
+} else if (typeof siteConfig.hero?.title === "string" && siteConfig.hero.title.length > 0) {
+  descriptions = [siteConfig.hero.title];
+} else {
+  descriptions = [""];
+}
+
 const typedElement = ref<HTMLElement | null>(null);
-const randomDescription = ref(descriptions[0]);
+const randomDescription = ref(descriptions[0] || "");
 let typed: Typed | null = null;
 
 onMounted(() => {
@@ -18,7 +30,7 @@ onMounted(() => {
       backDelay: siteConfig.hero.typed.backDelay || 2000,
     });
   } else {
-    randomDescription.value = descriptions[Math.floor(Math.random() * descriptions.length)];
+    randomDescription.value = descriptions[Math.floor(Math.random() * descriptions.length)] || "";
   }
 });
 
@@ -42,6 +54,8 @@ onUnmounted(() => {
               :src="siteConfig.profile.avatar"
               alt="avatar"
               class="relative h-full w-full object-cover rounded-full border-4 border-white/80 dark:border-slate-800/80 shadow-2xl transition-transform duration-500 group-hover:scale-105"
+              width="160px"
+              height="160px"
               loading="eager" />
           </div>
         </div>

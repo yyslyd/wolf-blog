@@ -29,7 +29,7 @@ export function formatDate(dateString: string): string {
  * Gets a random 404 image from the /public/404/ directory
  * @returns A random image path from /public/404/
  */
-export function getRandomFallbackImage(): string {
+export function getRandomFallbackImage(seed?: string): string {
   const fallbackImages: string[] = [
     "/404/1.webp",
     "/404/2.webp",
@@ -42,11 +42,17 @@ export function getRandomFallbackImage(): string {
     "/404/9.webp",
   ];
 
-  if (import.meta.server) {
-    // 在服务器端返回第一张图片以保证 SSR 一致性
-    return fallbackImages[0]!;
+  // If a seed is provided, choose a deterministic image based on the seed.
+  if (seed) {
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+      hash = (hash << 5) - hash + seed.charCodeAt(i);
+      hash |= 0;
+    }
+    const idx = Math.abs(hash) % fallbackImages.length;
+    return fallbackImages[idx]!;
   }
 
-  const randomIndex = Math.floor(Math.random() * fallbackImages.length);
-  return fallbackImages[randomIndex]!;
+  // No seed: return the first image to keep SSR/client consistent.
+  return fallbackImages[0]!;
 }

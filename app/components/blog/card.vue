@@ -1,27 +1,34 @@
 <script lang="ts" setup>
+import { useState } from "#app";
+
 interface Props {
   path?: string;
   title?: string;
   date?: string;
   description?: string;
-  image?: string;
+  image?: string | null;
   alt?: string;
   tags?: Array<string>;
   categories?: Array<string>;
   published?: boolean;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   path: "/",
   title: "no-title",
   date: "no-date",
   description: "no-description",
-  image: getRandomFallbackImage(),
+  image: null,
   alt: "no-alt",
-  ogImage: getRandomFallbackImage(),
   tags: () => [],
   categories: () => [],
   published: false,
+});
+
+// Use a per-card state key so the chosen fallback is the same on server and client
+const imageStateKey = `card-image-${props.path}`;
+const imageSrc = useState<string>(imageStateKey, () => {
+  return props.image || getRandomFallbackImage();
 });
 </script>
 
@@ -32,8 +39,8 @@ withDefaults(defineProps<Props>(), {
       <div class="overflow-hidden aspect-video">
         <NuxtImg
           class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-          :src="image"
-          :alt="alt" />
+          :src="imageSrc"
+          :alt="props.alt || 'no-alt'" />
       </div>
       <div class="px-5 py-5 flex flex-col grow">
         <div class="flex items-center justify-between mb-3">

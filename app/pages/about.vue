@@ -3,8 +3,9 @@ import { useRoute } from "vue-router";
 import TechInfo from "~/components/main/TechInfo.vue";
 import siteConfig from "~/config";
 
-const route = useRoute();
-const { data: content } = await useAsyncData(route.path, () => queryCollection("about").first());
+const { path } = useRoute();
+
+const { data: content } = await useAsyncData(path, () => queryCollection("about").first());
 
 useHead({
   title: `About - ${siteConfig.siteMeta.title}`,

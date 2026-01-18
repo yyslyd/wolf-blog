@@ -26,6 +26,8 @@ export default defineNuxtConfig({
     // "@nuxtjs/seo",
     "@nuxtjs/sitemap",
     "@nuxt/content",
+    "@nuxthq/studio",
+    "@nuxtjs/cloudinary",
     "@nuxtjs/color-mode",
     "@nuxt/ui",
     "@formkit/auto-animate",
@@ -120,6 +122,10 @@ export default defineNuxtConfig({
     classSuffix: "",
     preference: "system",
     fallback: "light",
+  },
+
+  cloudinary: {
+    cloudName: process.env.NUXT_CLOUDINARY_CLOUD_NAME || "dezcj4eks",
   },
 
   content: {

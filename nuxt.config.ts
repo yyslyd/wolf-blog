@@ -26,7 +26,6 @@ export default defineNuxtConfig({
     // "@nuxtjs/seo",
     "@nuxtjs/sitemap",
     "@nuxt/content",
-    "@nuxthq/studio",
     "@nuxtjs/cloudinary",
     "@nuxtjs/color-mode",
     "@nuxt/ui",

@@ -24,12 +24,11 @@
   "dependencies": {
     "@formkit/auto-animate": "0.9.0",
     "@jaseeey/vue-umami-plugin": "^1.4.0",
-    "@nuxt/content": "3.8.2",
+    "@nuxt/content": "^3.11.0",
     "@nuxt/fonts": "0.12.1",
     "@nuxt/icon": "2.1.1",
     "@nuxt/image": "2.0.0",
     "@nuxt/ui": "^4.3.0",
-    "@nuxthq/studio": "^2.2.1",
     "@nuxtjs/cloudinary": "^4.0.0",
     "@nuxtjs/color-mode": "4.0.0",
     "@nuxtjs/robots": "5.6.7",

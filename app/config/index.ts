@@ -1,21 +1,21 @@
-import type { SiteConfig } from "~/types/nav";
+﻿import type { SiteConfig } from "~/types/nav";
 
 const siteConfig: SiteConfig = {
   siteMeta: {
-    title: "RhenCloud's Blog",
-    description: "一个普普通通的技术博客，分享技术，记录日常，传递一些有趣的想法。",
+    title: "wolf's blog",
+    description: "Wish the world could be kind to everyone.",
     keywords: ["Technology", "Blog", "Development", "Programming"],
-    author: "RhenCloud",
-    url: "https://blog.rhen.cloud",
-    email: "i@rhen.cloud",
+    author: "wolf",
+    url: "https://theworld.com",
+    email: "ydd2844@gmail.com",
     lang: "zh-CN",
     favicon: "/favicon.svg",
     startTime: "2025-10-01",
   },
 
   hero: {
-    title: "RhenCloud's Blog",
-    description: ["Your Solution Answer Exists And Only.", "趁世界还未重启之前 约一次爱恋"],
+    title: "wolf's blog",
+    description: ["Wish the world could be kind to everyone."],
     typed: {
       enable: true,
       typeSpeed: 100,
@@ -26,19 +26,15 @@ const siteConfig: SiteConfig = {
   },
 
   profile: {
-    avatar: "/avatar.webp",
+    avatar: "/avatar.png",
     birthday: "2010-03-28",
   },
 
   socialLinks: [
-    { name: "GitHub", url: "https://github.com/RhenCloud" },
-    { name: "Email", url: "mailto:i@rhen.cloud" },
-    { name: "Telegram", url: "https://t.me/RhenCloud" },
-    { name: "Bilibili", url: "https://space.bilibili.com/1502883335" },
-    { name: "X", url: "https://x.com/RhenCloud75" },
+    { name: "Email", url: "mailto:ydd2844@gmail.com" },
   ],
 
-  navbar: {
+    navbar: {
     links: [
       // { name: "Home", path: "/", icon: "fa6-solid:house" },
       { name: "归档", path: "/archive", icon: "fa-solid:newspaper" },
@@ -57,8 +53,8 @@ const siteConfig: SiteConfig = {
   },
 
   lines: [
-    { name: "EdgeOne", url: "https://blog.rhen.cloud", ping: true },
-    { name: "Vercel", url: "https://blog.rhencloud.dev", ping: true },
+    { name: "EdgeOne", url: "https://theworld.com", ping: true },
+    { name: "Vercel", url: "https://theworld.com", ping: true },
     { name: "Dev", url: "http://localhost:3000", ping: false },
   ],
 
@@ -69,7 +65,7 @@ const siteConfig: SiteConfig = {
   },
 
   footer: {
-    beian: "津ICP备2025039003号-2",
+    beian: "",
     beianLink: "https://beian.miit.gov.cn/",
     customHtml: "",
     hitokoto: {
@@ -80,18 +76,23 @@ const siteConfig: SiteConfig = {
 
   comment: {
     twikoo: {
-      enable: true,
-      envId: "https://twikoo.rhen.cloud",
+      enable: false,
+      envId: "",
     },
   },
 
   umami: {
     enable: false,
-    scriptUrl: "https://cloud.umami.is/script.js",
-    apiKey: "api_MGcpRPYMcBmTKZOKdUVpr7mlBoWkck5g",
-    websiteId: "b33dfd14-7e62-498b-a199-de0ac38a1d44",
-    apiEndpoint: "https://api.umami.is",
+    scriptUrl: "",
+    apiKey: "",
+    websiteId: "",
+    apiEndpoint: "",
   },
 };
 
 export default siteConfig;
+
+
+
+
+

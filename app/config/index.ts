@@ -59,8 +59,8 @@ const siteConfig: SiteConfig = {
   ],
 
   theme: {
-    background: "/background.webp",
-    backgroundMobile: "https://www.loliapi.com/acg/pe",
+    background: "/background.png",
+    backgroundMobile: "/background-mobile.png",
     color: "#bd83f3",
   },
 

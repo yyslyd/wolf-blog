@@ -128,6 +128,9 @@ export default defineNuxtConfig({
   },
 
   content: {
+    preview: {
+      api: "https://api.nuxt.studio",
+    },
     experimental: { nativeSqlite: true },
     build: {
       markdown: {
